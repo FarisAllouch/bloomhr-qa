@@ -19,11 +19,13 @@ description: Execute approved manual BloomHr QA scenarios in the authorized brow
 2. Verify both allowed and disallowed role actions when required. If an account or access for a required role is missing, mark its scenarios **Blocked**.
 3. Compare observed behavior with the stated expected result. Record each scenario as **Passed**, **Failed**, or **Blocked**, with actual result and evidence where available.
 4. Capture screenshots or other evidence when available. Do not fabricate evidence or claim execution for a scenario that was only reviewed.
-5. Stop before destructive actions or changes to real employee data. Report the limitation and leave the Jira ticket unchanged if safe execution is not possible.
-6. After the QA run is complete, close the BloomHr QA browser session. If QA was performed in a pre-existing browser window with unrelated tabs, close only the BloomHr QA tab and leave unrelated tabs and windows open.
+5. Before creating or changing test data, inspect the relevant existing app data. Reuse a suitable existing record, notification, or state when it is sufficient for the scenario; do not recreate a situation that is already available. Create synthetic data only when no suitable existing data is available and the scenario cannot otherwise be executed, and obtain explicit user approval before changing app data.
+6. Stop before destructive actions or changes to real employee data unless the user has explicitly approved the specific action. Keep unrelated records untouched. Report incomplete coverage; leave the Jira ticket unchanged by default, unless the user explicitly directs a permitted transition after being informed of the gap. Follow `qa-ticket-outcome` for transition controls.
+7. After the QA run is complete, close the BloomHr QA browser session. If QA was performed in a pre-existing browser window with unrelated tabs, close only the BloomHr QA tab and leave unrelated tabs and windows open.
 
 ## Output
 
 Clearly separate generated scenarios from executed scenarios. For each executed scenario, include its status, observed actual result, expected result, and evidence reference if available. Summarize untested or blocked coverage and why.
 
 This skill does not authorize creating Jira bugs or changing ticket status; use the relevant reporting/outcome workflow after execution.
+After each tested or attempted ticket, use `qa-ticket-outcome` to record its Jira priority, result, confidence percentage, and status decision in the persistent QA ticket ledger before moving to another ticket.
